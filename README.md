@@ -20,7 +20,8 @@ ENTRYPOINT ["tail", "-f", "/dev/null"]
 
 
 Example of yaml file containing the deployment of debugger pods.\
-Namespace and image needs to be changed to match the environment it's deployed in.\
+Namespace needs to be changed to match the environment it's deployed in.\
+Currently the image is set to the default debug-image.\
 Consider adding egress rules for debugging the network.
 
 ```

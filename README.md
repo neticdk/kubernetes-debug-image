@@ -11,7 +11,7 @@ FROM ubuntu:latest
 ARG AZ_CLI_VERSION=2.40.0
 
 RUN useradd -u 10001 scratchuser
-RUN apt update; apt -y install vim netcat-openbsd curl wget bind9-host bind9-dnsutils python3 python3-pip postgresql-clientv; apt clean
+RUN apt update; apt -y install vim netcat-openbsd curl wget bind9-host bind9-dnsutils python3 python3-pip postgresql-client; apt clean
 RUN pip3 install azure-storage-blob azure-identity azure-cli==${AZ_CLI_VERSION}
 
 USER 10001
@@ -20,7 +20,8 @@ ENTRYPOINT ["tail", "-f", "/dev/null"]
 
 
 Example of yaml file containing the deployment of debugger pods.\
-Namespace and image needs to be changed to match the environment it's deployed in.\
+Namespace needs to be changed to match the environment it's deployed in.\
+Currently the image is set to the default debug-image.\
 Consider adding egress rules for debugging the network.
 
 ```

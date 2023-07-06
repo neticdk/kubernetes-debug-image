@@ -1,5 +1,5 @@
 # kubernetes-debug-image
-Debug image for debugging within a kubernetes cluster
+Debug image for debugging within a kubernetes cluster.
 
 
 Example of dockerfile with tools for debugging.\

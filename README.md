@@ -3,7 +3,7 @@ Debug image for debugging within a kubernetes cluster.
 
 
 Example of dockerfile with tools for debugging.\
-Tools can be added or removed depending on need. 
+Tools can be added or removed in ```apt install```. 
 
 ```
 FROM ubuntu:latest

@@ -2,6 +2,7 @@
 Debug image for debugging within a kubernetes cluster.
 
 
+# Dockerfile
 Example of dockerfile with tools for debugging.\
 Tools can be added or removed in ```apt install```. 
 
@@ -18,7 +19,7 @@ USER 10001
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 ```
 
-
+# Debug deployment
 Example of yaml file containing the deployment of debugger pods.\
 Namespace needs to be changed to match the environment it's deployed in.\
 Currently the image is set to the default debug-image.\

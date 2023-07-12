@@ -57,3 +57,8 @@ spec:
             drop:
               - "ALL"
 ```
+
+# Installation
+Change ```tag``` to a version or set to ```latest```.\
+Run below command to pull the image to docker, or set it for the deployment manifest.\
+``` docker pull ghcr.io/neticdk/kubernetes-debug-image:tag ```

@@ -50,7 +50,7 @@ spec:
         fsGroup: 1000
       containers:
       - name: debug-pod
-        image: lblnetic/debug-image:1.0.3
+        image: ghcr.io/neticdk/kubernetes-debug-image:v0.0.5
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:

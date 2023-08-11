@@ -50,10 +50,19 @@ spec:
         runAsGroup: 30001
       containers:
       - name: debug-pod
+<<<<<<< HEAD
         image: ghcr.io/neticdk/kubernetes-debug-image:<tag>
+=======
+        image: ghcr.io/neticdk/kubernetes-debug-image:v0.0.5
+>>>>>>> 9df8ab09ff745d6b8ba750eef75062146e9d0230
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
             drop:
               - "ALL"
 ```
+
+# Installation
+Change ```tag``` to a version or set to ```latest```.\
+Run below command to pull the image to docker, or set it for the deployment manifest.\
+``` docker pull ghcr.io/neticdk/kubernetes-debug-image:tag ```

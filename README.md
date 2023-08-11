@@ -7,15 +7,16 @@ Example of dockerfile with tools for debugging.\
 Tools can be added or removed in ```apt install```. 
 
 ```
-FROM ubuntu:latest
+FROM ubuntu:22.04
 
 ARG AZ_CLI_VERSION=2.40.0
 
 RUN useradd -u 10001 scratchuser
+RUN groupadd -g 30001 scratchuser
 RUN apt update; apt -y install vim netcat-openbsd curl wget bind9-host bind9-dnsutils python3 python3-pip postgresql-client; apt clean
 RUN pip3 install azure-storage-blob azure-identity azure-cli==${AZ_CLI_VERSION}
 
-USER 10001
+USER 10001:30001
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 ```
 
@@ -45,12 +46,11 @@ spec:
         netic.dk/network-component: other-app-name
     spec:
       securityContext:
-        runAsUser: 1000
-        runAsGroup: 3000
-        fsGroup: 1000
+        runAsUser: 10001
+        runAsGroup: 30001
       containers:
       - name: debug-pod
-        image: lblnetic/debug-image:1.0.3
+        image: ghcr.io/neticdk/kubernetes-debug-image:<tag>
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:

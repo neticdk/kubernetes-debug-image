@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-ARG AZ_CLI_VERSION=2.40.0
+ARG AZ_CLI_VERSION=2.59.0
 
 RUN useradd -u 10001 scratchuser
 RUN groupadd -g 30001 debuggroup 

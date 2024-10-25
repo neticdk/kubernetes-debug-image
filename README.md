@@ -51,6 +51,10 @@ spec:
       containers:
       - name: debug-pod
         image: ghcr.io/neticdk/kubernetes-debug-image:<tag>
+        command:
+          - /bin/tail
+          - -f
+          - /dev/null
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:

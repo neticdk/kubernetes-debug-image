@@ -20,6 +20,7 @@ metadata:
     netic.dk/network-rules-egress: app-name
     netic.dk/network-component: other-app-name
 spec:
+  restartPolicy: Never
   securityContext:
     runAsUser: 10001
     runAsGroup: 30001

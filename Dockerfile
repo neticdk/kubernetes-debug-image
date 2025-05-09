@@ -9,4 +9,5 @@ RUN pip3 install websocket-client azure-storage-blob azure-identity azure-cli==$
 RUN npm install -g wscat
 
 USER 10001:30001
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["sleep"]
+CMD ["1800"]

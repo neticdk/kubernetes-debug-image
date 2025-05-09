@@ -1,29 +1,23 @@
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: debug-deployment
-  namespace: default
+  name: debug-pod
+  namespace: <namespace>
+  labels:
+    appName: debug
+    netic.dk/network-rules-egress: app-name
+    netic.dk/network-component: other-app-name
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      appName: debug
-  template:
-    metadata:
-      labels:
-        appName: debug
-        netic.dk/network-rules-egress: app-name
-        netic.dk/network-component: other-app-name
-    spec:
-      securityContext:
-        runAsUser: 10001
-        runAsGroup: 30001
-      containers:
-      - name: debug-pod
-        image: ghcr.io/neticdk/kubernetes-debug-image:latest
-        securityContext:
-          allowPrivilegeEscalation: false
-          capabilities:
-            drop:
-              - "ALL"
+  securityContext:
+    runAsUser: 10001
+    runAsGroup: 30001
+  containers:
+  - name: debug-pod
+    image: ghcr.io/neticdk/kubernetes-debug-image:<tag>
+    args: ["1800"]
+    securityContext:
+      capabilities:
+        drop:
+        - "ALL"
+      allowPrivilegeEscalation: false

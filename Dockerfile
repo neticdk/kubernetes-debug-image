@@ -1,6 +1,6 @@
 FROM cgr.dev/chainguard/wolfi-base
 
-RUN apk update && apk add \
+RUN apk add --no-cache \
   bash \
   busybox \
   curl \
@@ -20,9 +20,8 @@ RUN apk update && apk add \
   ca-certificates
 
 USER root
-RUN ln -s /usr/bin/busybox /usr/bin/telnet
-
-RUN addgroup -g 30001 debuggroup && \
+RUN ln -s /usr/bin/busybox /usr/bin/telnet && \
+  addgroup -g 30001 debuggroup && \
   adduser -u 10001 -G debuggroup -D scratchuser
 
 USER 10001:30001

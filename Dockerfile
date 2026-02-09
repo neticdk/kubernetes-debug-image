@@ -1,13 +1,34 @@
-FROM ubuntu:24.04@sha256:66460d557b25769b102175144d538d88219c077c678a49af4afca6fbfc1b5252
+FROM cgr.dev/chainguard/wolfi-base
 
-ARG AZ_CLI_VERSION=2.72.0
+RUN apk update && apk add \
+  bash \
+  busybox \
+  curl \
+  wget \
+  vim \
+  netcat-openbsd \
+  bind-tools \
+  python-3 \
+  py3-pip \
+  postgresql-client \
+  mtr \
+  tcpdump \
+  net-tools \
+  stress-ng \
+  az \
+  libssl3 \
+  ca-certificates
 
-RUN useradd -u 10001 scratchuser
-RUN groupadd -g 30001 debuggroup 
-RUN apt update -y; apt install -y vim netcat-openbsd curl wget bind9-host bind9-dnsutils python3 python3-pip npm libssl-dev postgresql-client mtr telnet traceroute tcpdump net-tools stress; apt clean
-RUN pip3 install websocket-client azure-storage-blob azure-identity azure-cli==${AZ_CLI_VERSION}
-RUN npm install -g wscat
+USER root
+RUN ln -s /usr/bin/busybox /usr/bin/telnet
+
+RUN addgroup -g 30001 debuggroup && \
+  adduser -u 10001 -G debuggroup -D scratchuser
 
 USER 10001:30001
+RUN pip install --no-cache-dir --user websocket-client azure-storage-blob azure-identity
+
+ENV PATH="/home/scratchuser/.local/bin:$PATH"
+
 ENTRYPOINT ["sleep"]
-CMD ["1800"]
+CMD ["3600"]

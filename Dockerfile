@@ -17,7 +17,8 @@ RUN apk add --no-cache \
   stress-ng \
   az \
   libssl3 \
-  ca-certificates
+  ca-certificates \
+  unzip
 
 USER root
 RUN ln -s /usr/bin/busybox /usr/bin/telnet && \

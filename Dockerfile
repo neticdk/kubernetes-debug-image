@@ -1,4 +1,4 @@
-FROM cgr.dev/chainguard/wolfi-base@sha256:00f9662b838432de5f24eabe5dc86f20d1510d158eda1bcaf68bbba8412544cc
+FROM cgr.dev/chainguard/wolfi-base@sha256:52e71f61c6afd1f8d2625cff4465d8ecee156668ca665f7e9c582d1cc914eb6a
 
 RUN apk add --no-cache \
   bash \
